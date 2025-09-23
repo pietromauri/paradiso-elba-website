@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { GALLERY_IMAGES } from '../constants.tsx';
 
-type FilterType = 'all' | 'panorami' | 'spiagge' | 'outdoor' | 'tramonti';
+type FilterType = 'all' | 'panorami' | 'spiagge' | 'outdoor' | 'tramonti' | 'marciana_marina';
 
 const Gallery: React.FC = () => {
   const [filter, setFilter] = useState<FilterType>('all');
@@ -33,6 +33,7 @@ const Gallery: React.FC = () => {
           <div className="flex justify-center flex-wrap gap-4">
             <FilterButton category="all" label="Tutti" />
             <FilterButton category="panorami" label="Panorami" />
+            <FilterButton category="marciana_marina" label="Marciana Marina" />
             <FilterButton category="tramonti" label="Tramonti" />
             <FilterButton category="spiagge" label="Spiagge" />
             <FilterButton category="outdoor" label="Vita all'Aperto" />

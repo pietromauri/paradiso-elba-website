@@ -39,6 +39,13 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   { id: 2, category: 'panorami', src: '/images/gallery/panorami/elba-porto-ferraio.webp', alt: 'Panorama di Portoferraio' },
   { id: 6, category: 'panorami', src: '/images/gallery/panorami/isola-elba.jpg', alt: 'Panorama dell\'Isola d\'Elba' },
   { id: 11, category: 'panorami', src: '/images/gallery/panorami/isola-delba-portoferraio-hd.jpg', alt: 'Portoferraio HD' },
+  { id: 26, category: 'panorami', src: '/images/gallery/panorami/PXL_20250806_082840505.jpg', alt: 'Panorama' },
+
+  // Marciana Marina
+  { id: 23, category: 'marciana_marina', src: '/images/gallery/marciana_marina/PXL_20250804_104059602.MP.jpg', alt: 'Marciana Marina' },
+  { id: 24, category: 'marciana_marina', src: '/images/gallery/marciana_marina/PXL_20250804_191654646.jpg', alt: 'Marciana Marina' },
+  { id: 25, category: 'marciana_marina', src: '/images/gallery/marciana_marina/PXL_20250805_190839822.PANO.jpg', alt: 'Marciana Marina' },
+  { id: 27, category: 'marciana_marina', src: '/images/gallery/marciana_marina/PXL_20250807_104059424.jpg', alt: 'Marciana Marina' },
 
   // Spiagge
   { id: 3, category: 'spiagge', src: '/images/gallery/spiagge/isola-delba-5103592_1280.jpg', alt: 'Spiaggia dell\'Isola d\'Elba' },
@@ -52,6 +59,9 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   // Tramonti
   { id: 21, category: 'tramonti', src: '/images/gallery/tramonti/Generated Image September 17, 2025 - 9_57PM.png', alt: 'Tramonto' },
   { id: 22, category: 'tramonti', src: '/images/gallery/tramonti/Generated Image September 17, 2025 - 9_50PM.png', alt: 'Tramonto' },
+  { id: 28, category: 'tramonti', src: '/images/gallery/tramonti/PXL_20250804_191858681.jpg', alt: 'Tramonto' },
+  { id: 29, category: 'tramonti', src: '/images/gallery/tramonti/PXL_20250804_192845264.MP.jpg', alt: 'Tramonto' },
+  { id: 30, category: 'tramonti', src: '/images/gallery/tramonti/PXL_20250805_190712510.jpg', alt: 'Tramonto' },
 ];
 
 export const Icons = {
