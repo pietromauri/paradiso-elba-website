@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Page } from '../types';
 import { APARTMENT_IMAGES, SERVICES_LIST } from '../constants';
 import SectionDetail from './SectionDetail';
 import NearbyFeatures from './NearbyFeatures';
@@ -9,7 +10,11 @@ const bedroomImages = APARTMENT_IMAGES.filter(img => img.category === 'camera');
 const bathroomImages = APARTMENT_IMAGES.filter(img => img.category === 'bagno');
 const balconyImages = APARTMENT_IMAGES.filter(img => img.category === 'balcone');
 
-const Apartment: React.FC = () => {
+interface ApartmentProps {
+  onNavigate: (page: Page) => void;
+}
+
+const Apartment: React.FC<ApartmentProps> = ({ onNavigate }) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const handleImageClick = (imageSrc: string) => {
@@ -86,6 +91,21 @@ const Apartment: React.FC = () => {
 
         </main>
       </div>
+
+      <section className="text-center py-20 bg-gray-100">
+        <div className="container mx-auto">
+          <h3 className="text-4xl font-serif text-gray-800">Pronto a prenotare?</h3>
+          <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+            Verifica le date disponibili e inviaci una richiesta. Ti risponderemo al più presto!
+          </p>
+          <button
+            onClick={() => onNavigate(Page.Contact)}
+            className="mt-8 px-8 py-4 bg-teal-600 text-white font-bold text-lg rounded-full hover:bg-teal-700 transition-colors shadow-lg"
+          >
+            Verifica disponibilità
+          </button>
+        </div>
+      </section>
 
       {selectedImage && (
         <div 

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { GALLERY_IMAGES } from '../constants.tsx';
 
-type FilterType = 'all' | 'panorami' | 'spiagge' | 'outdoor' | 'tramonti' | 'marciana_marina';
+type FilterType = 'all' | 'panorami' | 'spiagge' | 'tramonti' | 'marciana_marina';
 
 const Gallery: React.FC = () => {
   const [filter, setFilter] = useState<FilterType>('all');
@@ -36,7 +36,7 @@ const Gallery: React.FC = () => {
             <FilterButton category="marciana_marina" label="Marciana Marina" />
             <FilterButton category="tramonti" label="Tramonti" />
             <FilterButton category="spiagge" label="Spiagge" />
-            <FilterButton category="outdoor" label="Vita all'Aperto" />
+
           </div>
         </section>
 
@@ -55,19 +55,7 @@ const Gallery: React.FC = () => {
           </div>
         </section>
 
-        {/* User Generated Content */}
-        <section className="mt-20 text-center bg-gray-50 py-16 rounded-lg">
-          <h3 className="text-4xl font-serif text-gray-800">I Vostri Momenti</h3>
-          <p className="mt-4 max-w-3xl mx-auto text-lg text-gray-600">
-            Adoriamo vedere l'Elba attraverso i vostri occhi! Condividi i tuoi scatti migliori su Instagram con l'hashtag <span className="font-bold text-teal-600">#ParadisoElba</span> e potresti vederli pubblicati qui.
-          </p>
-          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 px-4 md:px-10">
-              <img src="https://picsum.photos/seed/guest1/500/500" className="rounded-lg shadow-md aspect-square object-cover" alt="Foto ospite 1"/>
-              <img src="https://picsum.photos/seed/guest2/500/500" className="rounded-lg shadow-md aspect-square object-cover" alt="Foto ospite 2"/>
-              <img src="https://picsum.photos/seed/guest3/500/500" className="rounded-lg shadow-md aspect-square object-cover" alt="Foto ospite 3"/>
-              <img src="https://picsum.photos/seed/guest4/500/500" className="rounded-lg shadow-md aspect-square object-cover" alt="Foto ospite 4"/>
-          </div>
-        </section>
+
       </div>
     </div>
   );

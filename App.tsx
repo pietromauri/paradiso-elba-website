@@ -174,7 +174,7 @@ const App: React.FC = () => {
       case Page.Home:
         return <Home onNavigate={handleNavigate} />;
       case Page.Apartment:
-        return <Apartment />;
+        return <Apartment onNavigate={handleNavigate} />;
       case Page.Activities:
         return <Activities />;
       case Page.Gallery:

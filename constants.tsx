@@ -29,11 +29,7 @@ export const ACTIVITIES: Activity[] = [
 ];
 
 export const GALLERY_IMAGES: GalleryImage[] = [
-  // Outdoor
-  { id: 5, category: 'outdoor', src: 'https://picsum.photos/id/20/800/600', alt: 'Sentiero di trekking con vista sul mare' },
-  { id: 9, category: 'outdoor', src: 'https://picsum.photos/id/234/800/600', alt: 'Persona in kayak in una grotta marina' },
-  { id: 17, category: 'outdoor', src: 'https://picsum.photos/id/404/800/600', alt: 'Mountain bike su un sentiero costiero' },
-  { id: 18, category: 'outdoor', src: 'https://picsum.photos/id/405/800/600', alt: 'Passeggiata in un bosco di lecci' },
+
 
   // Panorami
   { id: 2, category: 'panorami', src: '/images/gallery/panorami/elba-porto-ferraio.webp', alt: 'Panorama di Portoferraio' },
