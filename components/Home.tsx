@@ -35,7 +35,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
             Il tuo angolo di paradiso all'Isola d'Elba
           </h1>
           <p className="mt-4 text-xl md:text-2xl max-w-3xl mx-auto drop-shadow-lg">
-            Un rifugio moderno a pochi passi dal mare, dove il profumo della macchia mediterranea si unisce al blu del Tirreno.
+            Svegliati con il profumo della macchia mediterranea, fai colazione sulla nostra terrazza e preparati a esplorare i sentieri più belli dell'isola.
           </p>
           <button
             onClick={() => onNavigate(Page.Apartment)}
@@ -51,7 +51,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         <div className="container mx-auto px-6 text-center">
             <h2 className="text-4xl font-serif text-gray-800">Vivi un'esperienza autentica</h2>
             <p className="mt-4 max-w-3xl mx-auto text-lg text-gray-600">
-                Svegliati con il suono delle onde, fai colazione sulla nostra terrazza baciata dal sole e lasciati avvolgere dalla tranquillità di un ambiente pensato per il tuo benessere, tra relax e avventura.
+                Svegliati con il profumo della macchia mediterranea, fai colazione sulla nostra terrazza baciata dal sole e preparati a esplorare i sentieri più belli dell'isola, tra relax e avventura.
             </p>
         </div>
       </section>
@@ -70,11 +70,15 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           </div>
           {/* Avventure Elbane */}
           <div className="bg-white rounded-lg shadow-xl overflow-hidden group transform hover:-translate-y-2 transition-transform duration-300">
-            <img src="https://picsum.photos/id/10/600/400" alt="Kayak in una caletta" className="w-full h-56 object-cover" />
+            <img src="/images/attivita/image-elba-coast.jpg" alt="Costa dell'Elba" className="w-full h-56 object-cover" onError={(e) => { e.currentTarget.src = 'https://picsum.photos/id/10/600/400' }} />
             <div className="p-6">
               <h3 className="text-2xl font-serif text-gray-800">Avventure Elbane</h3>
               <p className="mt-2 text-gray-600">Esplora i sentieri nascosti e le calette segrete dell'isola.</p>
-              <a href="#" onClick={(e) => { e.preventDefault(); onNavigate(Page.Activities); }} className="mt-4 inline-block text-teal-600 font-semibold hover:underline">Scopri le attività &rarr;</a>
+              <a href="#" onClick={(e) => { 
+                e.preventDefault(); 
+                window.history.pushState({}, '', '?partenza=marciana-marina');
+                onNavigate(Page.Activities); 
+              }} className="mt-4 inline-block text-teal-600 font-semibold hover:underline">Scopri le attività &rarr;</a>
             </div>
           </div>
           {/* Dicono di Noi */}

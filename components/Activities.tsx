@@ -102,20 +102,47 @@ const ActivityCard: React.FC<{ activity: typeof ACTIVITIES[0] }> = ({ activity }
                       <span className="block text-xs uppercase tracking-wider text-teal-600 font-bold mb-1">Durata Stimata</span>
                       <span className="text-lg font-medium text-gray-800">{activity.duration}</span>
                     </div>
-                    {activity.gpxTrack && (
+                    {activity.gpxTrack && activity.gpxTrack !== '#' && (
                       <a
                         href={activity.gpxTrack}
-                        download
+                        download={!activity.gpxTrack.startsWith('http')}
+                        target={activity.gpxTrack.startsWith('http') ? '_blank' : '_self'}
+                        rel="noreferrer"
                         className="flex items-center justify-center gap-2 w-full bg-teal-600 text-white px-4 py-3 rounded-xl font-bold hover:bg-teal-700 transition-all shadow-md active:scale-95"
                       >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
-                        Scarica Traccia GPX
+                        {activity.gpxTrack.startsWith('http') ? 'Vedi Mappa e Traccia' : 'Scarica Traccia GPX'}
                       </a>
                     )}
                   </div>
                 </div>
+
+                {activity.hostTip && (
+                  <div className="mb-12 bg-amber-50 border-l-4 border-amber-500 p-6 rounded-r-xl">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0">
+                        <svg className="h-6 w-6 text-amber-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </div>
+                      <div className="ml-3">
+                        <h3 className="text-lg font-medium text-amber-800">Il Consiglio dell'Host</h3>
+                        <div className="mt-2 text-amber-700">
+                          <p>{activity.hostTip.text}</p>
+                          {activity.hostTip.linkUrl && (
+                            <p className="mt-2">
+                              <a href={activity.hostTip.linkUrl} target="_blank" rel="noreferrer" className="font-bold underline hover:text-amber-900">
+                                {activity.hostTip.linkText || 'Scopri di più'} &rarr;
+                              </a>
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
 
                 {/* Photo Mosaic */}
                 <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
@@ -160,7 +187,25 @@ const ActivityCard: React.FC<{ activity: typeof ACTIVITIES[0] }> = ({ activity }
 
 const Activities: React.FC = () => {
   const mareActivities = ACTIVITIES.filter(a => a.category === 'Mare');
-  const terraActivities = ACTIVITIES.filter(a => a.category === 'Terra');
+  
+  // Custom sorting for Terra activities based on URL param
+  const terraActivities = React.useMemo(() => {
+    const list = ACTIVITIES.filter(a => a.category === 'Terra');
+    const params = new URLSearchParams(window.location.search);
+    const partenza = params.get('partenza');
+    
+    if (partenza === 'marciana-marina') {
+      return list.sort((a, b) => {
+        const aIsMarciana = a.title.toLowerCase().includes('marciana marina');
+        const bIsMarciana = b.title.toLowerCase().includes('marciana marina');
+        if (aIsMarciana && !bIsMarciana) return -1;
+        if (!aIsMarciana && bIsMarciana) return 1;
+        return 0;
+      });
+    }
+    return list;
+  }, []);
+
   const culturaActivities = ACTIVITIES.filter(a => a.category === 'Cultura e Gusto');
 
   return (

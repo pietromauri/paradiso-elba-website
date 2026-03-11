@@ -146,8 +146,7 @@ const Footer: React.FC = () => (
           <h3 className="text-lg font-semibold">Contatti</h3>
           <ul className="mt-4 space-y-2 text-gray-300">
             <li>Email: info@paradisoelba.it</li>
-            <li>Telefono: +39 123 456 7890</li>
-            <li>Località: Procchio, Isola d'Elba</li>
+            <li>Località: Marciana Marina, Isola d'Elba</li>
           </ul>
         </div>
       </div>

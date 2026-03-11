@@ -70,6 +70,7 @@ const Apartment: React.FC<ApartmentProps> = ({ onNavigate }) => {
             <h3 className="text-4xl font-serif text-center text-gray-800 mb-12">
               Servizi Inclusi
             </h3>
+            
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 max-w-5xl mx-auto">
               {SERVICES_LIST.map((service, index) => (
                 <div key={index} className="flex items-start space-x-4">
@@ -84,6 +85,22 @@ const Apartment: React.FC<ApartmentProps> = ({ onNavigate }) => {
                   </div>
                 </div>
               ))}
+            </div>
+
+            <div className="mt-16 bg-teal-50 border border-teal-100 rounded-2xl p-8 max-w-4xl mx-auto shadow-sm">
+              <div className="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-6">
+                <div className="flex-shrink-0 bg-teal-100 p-4 rounded-full text-teal-700">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-teal-900 mb-2">Perfetto per gli Escursionisti</h4>
+                  <p className="text-teal-800">
+                    Sappiamo cosa serve dopo una lunga giornata sui sentieri: approfitta della <strong>Lavatrice</strong>, del <strong>Microonde</strong> e del riscaldamento con <strong>Pompa di calore</strong> per rimetterti in sesto. Inoltre, il Supermercato Conad e la storica Gastronomia locale sono a pochi passi per un rapido rifornimento!
+                  </p>
+                </div>
+              </div>
             </div>
           </section>
 

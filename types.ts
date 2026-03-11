@@ -28,6 +28,11 @@ export interface Activity {
   difficulty: string;
   duration: string;
   attribution?: string;
+  hostTip?: {
+    text: string;
+    linkUrl?: string;
+    linkText?: string;
+  };
 }
 
 export interface GalleryImage {

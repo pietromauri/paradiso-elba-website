@@ -54,10 +54,6 @@ const Contact: React.FC = () => {
                         <h3 className="text-3xl font-serif text-center text-gray-800 mb-6">Contatti Agenzia Brignetti</h3>
                         <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8 text-lg">
                             <div className="flex items-center text-gray-700">
-                                <PhoneIcon className="h-6 w-6 mr-2 text-teal-600" />
-                                <a href="tel:+393351673531" className="hover:text-teal-600">+39 3351673531</a>
-                            </div>
-                            <div className="flex items-center text-gray-700">
                                 <EmailIcon className="h-6 w-6 mr-2 text-teal-600" />
                                 <a href="mailto:agenziabrignetti@gmail.com" className="hover:text-teal-600">agenziabrignetti@gmail.com</a>
                             </div>
