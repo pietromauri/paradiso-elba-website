@@ -28,6 +28,19 @@ export const ACTIVITIES: Activity[] = [
   { id: 6, category: 'Cultura e Gusto', title: 'Visita al borgo di Capoliveri', description: 'Perditi tra i vicoli caratteristici di uno dei borghi più affascinanti dell\'isola, ricco di storia e botteghe artigiane.', image: '/images/attivita/1443px-Capoliveri_Elbe_Elba.jpg', difficulty: 'Facile', duration: 'Mezza giornata', attribution: 'Di Gregory Zeier - Opera propria, CC BY 3.0, https://commons.wikimedia.org/w/index.php?curid=2591702' },
   // Nuove attività da foto
   {
+    id: 101,
+    category: 'Terra',
+    title: 'Alla scoperta della natura selvaggia: Trekking a La Cala',
+    description: 'Dati Tecnici: Distanza: 7-8 km (A/R) | Dislivello: +/- 200 m\nPunto di partenza: Direttamente a piedi dall\'appartamento.\n\nUn\'avventura ad anello perfetta per la primavera, lontana dalle rotte più affollate. Partendo dal nostro appartamento a Marciana Marina, si sale lungo il sentiero 150 e 150F. Il cammino ti porterà ad attraversare una fresca lecceta e antichi giacimenti di caolino, per poi scendere lungo il fosso \'dei Pizzenni\' fino a sbucare su una baia segreta: la spiaggia de La Cala. Il ritorno si chiude in bellezza con una sosta alla Punta della Madonnina, che regala uno dei panorami più spettacolari sulla costa nord-occidentale.',
+    image: 'https://placehold.co/800x600/e2e8f0/475569?text=[INSERIRE+QUI+FOTO+UTENTE+-+SPIAGGIA+LA+CALA]',
+    difficulty: 'Escursionistico',
+    duration: 'Mezza giornata',
+    gpxTrack: '#',
+    hostTip: {
+      text: 'La Cala è una caletta incontaminata e priva di servizi: portati il pranzo al sacco per un picnic indimenticabile ascoltando solo il rumore delle onde. Ricorda di indossare buone scarpe da trekking: trovandoci sul versante nord, i sentieri nel bosco mantengono una piacevole umidità primaverile e il fondo può essere a tratti scivoloso.'
+    }
+  },
+  {
     id: 100,
     category: 'Terra',
     title: 'Sentiero Costiero: Marciana Marina - Sant\'Andrea',
