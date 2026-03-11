@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { GALLERY_IMAGES } from '../constants.tsx';
 
-type FilterType = 'all' | 'panorami' | 'spiagge' | 'tramonti' | 'marciana_marina';
+type FilterType = 'all' | 'panorami' | 'spiagge' | 'tramonti' | 'marciana_marina' | 'pianosa';
 
 const Gallery: React.FC = () => {
   const [filter, setFilter] = useState<FilterType>('all');
@@ -36,6 +36,7 @@ const Gallery: React.FC = () => {
             <FilterButton category="marciana_marina" label="Marciana Marina" />
             <FilterButton category="tramonti" label="Tramonti" />
             <FilterButton category="spiagge" label="Spiagge" />
+            <FilterButton category="pianosa" label="Pianosa" />
 
           </div>
         </section>

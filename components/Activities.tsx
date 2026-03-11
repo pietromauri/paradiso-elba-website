@@ -2,22 +2,161 @@
 import React from 'react';
 import { ACTIVITIES } from '../constants.tsx';
 
-const ActivityCard: React.FC<{ activity: typeof ACTIVITIES[0] }> = ({ activity }) => (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
-        <img src={activity.image} alt={activity.title} className="w-full h-56 object-cover" />
-        <div className="p-6">
-            <h4 className="text-2xl font-serif text-teal-700">{activity.title}</h4>
-            <p className="mt-2 text-gray-600">{activity.description}</p>
-            <div className="mt-4 flex justify-between text-sm text-gray-500">
-                <span>Difficoltà: <strong>{activity.difficulty}</strong></span>
-                <span>Durata: <strong>{activity.duration}</strong></span>
+const ActivityCard: React.FC<{ activity: typeof ACTIVITIES[0] }> = ({ activity }) => {
+  const [showDetail, setShowDetail] = React.useState(false);
+  const [selectedImage, setSelectedImage] = React.useState<string | null>(null);
+
+  const allImages = React.useMemo(() => {
+    const list = [activity.image, ...(activity.images || [])];
+    return Array.from(new Set(list)).filter(img => !img.includes('placeholder'));
+  }, [activity.image, activity.images]);
+
+  // Scroll Lock Effect
+  React.useEffect(() => {
+    if (showDetail) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [showDetail]);
+
+  return (
+    <>
+      <div
+        className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col transform hover:-translate-y-2 transition-transform duration-300 cursor-pointer group"
+        onClick={() => setShowDetail(true)}
+      >
+        <div className="relative h-56 overflow-hidden">
+          <img
+            src={activity.image}
+            alt={activity.title}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+          {allImages.length > 1 && (
+            <div className="absolute top-2 right-2 bg-black/60 text-white px-2 py-1 rounded-md text-xs backdrop-blur-sm flex items-center gap-1">
+              <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
+              </svg>
+              {allImages.length} Foto
             </div>
-            <a href="#" className="mt-6 inline-block bg-teal-600 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-teal-700 transition-colors">
-                Maggiori Dettagli
-            </a>
+          )}
         </div>
-    </div>
-);
+        <div className="p-6 flex-grow flex flex-col">
+          <h4 className="text-2xl font-serif text-teal-700">{activity.title}</h4>
+          <p className="mt-2 text-gray-600 line-clamp-2 flex-grow">{activity.description}</p>
+          <div className="mt-4 grid grid-cols-2 gap-2 text-sm text-gray-500">
+            <div className="flex items-center">
+              <span className="font-semibold mr-1">Difficoltà:</span>
+              <span>{activity.difficulty}</span>
+            </div>
+            <div className="flex items-center">
+              <span className="font-semibold mr-1">Durata:</span>
+              <span>{activity.duration}</span>
+            </div>
+          </div>
+          <div className="mt-6">
+            <button
+              className="w-full bg-teal-600 text-white px-4 py-2 rounded-full text-sm font-bold hover:bg-teal-700 transition-colors text-center"
+            >
+              Vedi Dettagli & Foto
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Detail View Modal */}
+      {showDetail && (
+        <div className="fixed inset-0 z-50 bg-white overflow-y-auto">
+          <div className="min-h-screen w-full flex flex-col items-center">
+            {/* Header */}
+            <div className="sticky top-0 z-10 bg-white/80 backdrop-blur-md border-b border-gray-100 flex items-center justify-between px-6 py-4">
+              <div>
+                <h2 className="text-2xl md:text-3xl font-serif text-teal-700 leading-tight">{activity.title}</h2>
+              </div>
+              <button
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors text-gray-500"
+                onClick={() => setShowDetail(false)}
+              >
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <div className="container mx-auto px-6 py-10 flex-grow">
+              <div className="max-w-6xl mx-auto">
+                {/* Info Panel */}
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+                  <div className="md:col-span-3">
+                    <p className="text-xl text-gray-700 leading-relaxed whitespace-pre-wrap">{activity.description}</p>
+                  </div>
+                  <div className="space-y-4 bg-teal-50 p-6 rounded-2xl">
+                    <div>
+                      <span className="block text-xs uppercase tracking-wider text-teal-600 font-bold mb-1">Difficoltà</span>
+                      <span className="text-lg font-medium text-gray-800">{activity.difficulty}</span>
+                    </div>
+                    <div>
+                      <span className="block text-xs uppercase tracking-wider text-teal-600 font-bold mb-1">Durata Stimata</span>
+                      <span className="text-lg font-medium text-gray-800">{activity.duration}</span>
+                    </div>
+                    {activity.gpxTrack && (
+                      <a
+                        href={activity.gpxTrack}
+                        download
+                        className="flex items-center justify-center gap-2 w-full bg-teal-600 text-white px-4 py-3 rounded-xl font-bold hover:bg-teal-700 transition-all shadow-md active:scale-95"
+                      >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        Scarica Traccia GPX
+                      </a>
+                    )}
+                  </div>
+                </div>
+
+                {/* Photo Mosaic */}
+                <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+                  {allImages.map((img, idx) => (
+                    <div
+                      key={idx}
+                      className="break-inside-avoid relative group cursor-zoom-in rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
+                      onClick={() => setSelectedImage(img)}
+                    >
+                      <img
+                        src={img}
+                        alt={`${activity.title} ${idx + 1}`}
+                        className="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Lightbox for Mosaic */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-[60] bg-black/95 flex items-center justify-center p-4 cursor-zoom-out"
+          onClick={() => setSelectedImage(null)}
+        >
+          <img
+            src={selectedImage}
+            alt="Expanded view"
+            className="max-w-full max-h-full object-contain rounded shadow-2xl animate-in zoom-in-95 duration-200"
+          />
+        </div>
+      )}
+    </>
+  );
+};
 
 const Activities: React.FC = () => {
   const mareActivities = ACTIVITIES.filter(a => a.category === 'Mare');
@@ -60,12 +199,12 @@ const Activities: React.FC = () => {
 
         {/* Insider Tips */}
         <section className="mt-20 bg-teal-50 rounded-lg p-12">
-            <div className="text-center">
-                <h3 className="text-4xl font-serif text-teal-700">La Nostra Elba Segreta</h3>
-                <p className="mt-4 max-w-3xl mx-auto text-lg text-gray-700">
-                    Oltre le mete più famose, c'è un'Elba autentica che amiamo condividere. Chiedici consigli sulle calette meno conosciute, i sentieri panoramici segreti e i ristoranti frequentati solo dalla gente del posto per un'esperienza davvero unica.
-                </p>
-            </div>
+          <div className="text-center">
+            <h3 className="text-4xl font-serif text-teal-700">La Nostra Elba Segreta</h3>
+            <p className="mt-4 max-w-3xl mx-auto text-lg text-gray-700">
+              Oltre le mete più famose, c'è un'Elba autentica che amiamo condividere. Chiedici consigli sulle calette meno conosciute, i sentieri panoramici segreti e i ristoranti frequentati solo dalla gente del posto per un'esperienza davvero unica.
+            </p>
+          </div>
         </section>
       </div>
     </div>

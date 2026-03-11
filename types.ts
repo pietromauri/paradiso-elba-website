@@ -23,6 +23,8 @@ export interface Activity {
   title: string;
   description: string;
   image: string;
+  images?: string[];
+  gpxTrack?: string;
   difficulty: string;
   duration: string;
   attribution?: string;
@@ -30,7 +32,7 @@ export interface Activity {
 
 export interface GalleryImage {
   id: number | string;
-  category: 'appartamento' | 'panorami' | 'spiagge' | 'outdoor' | 'living' | 'camera' | 'bagno' | 'balcone';
+  category: 'appartamento' | 'panorami' | 'spiagge' | 'outdoor' | 'living' | 'camera' | 'bagno' | 'balcone' | 'marciana_marina' | 'tramonti' | 'pianosa';
   src: string;
   alt: string;
 }
