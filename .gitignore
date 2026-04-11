@@ -23,4 +23,4 @@ dist-ssr
 *.sln
 *.sw?
 # Immagini ignorate temporaneamente
-images/attivita/
+public/images/attivita/
