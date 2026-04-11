@@ -17,21 +17,21 @@ import DishwasherIcon from './components/icons/DishwasherIcon';
 
 export const APARTMENT_IMAGES: GalleryImage[] = [
   // --- Immagini Soggiorno / Living ---
-  { id: 'liv1', src: '/images/apartment/living-1.jpeg', alt: 'Soggiorno con divano letto e vista', category: 'living' },
-  { id: 'liv2', src: '/images/apartment/living-2.jpeg', alt: 'Angolo cottura moderno e funzionale', category: 'living' },
-  { id: 'liv3', src: '/images/apartment/living-3.jpeg', alt: 'Vista del soggiorno dalla cucina', category: 'living' },
-  { id: 'liv4', src: '/images/apartment/living-4.jpeg', alt: 'Parete attrezzata con TV e tavolo', category: 'living' },
+  { id: 'liv1', src: './images/apartment/living-1.jpeg', alt: 'Soggiorno con divano letto e vista', category: 'living' },
+  { id: 'liv2', src: './images/apartment/living-2.jpeg', alt: 'Angolo cottura moderno e funzionale', category: 'living' },
+  { id: 'liv3', src: './images/apartment/living-3.jpeg', alt: 'Vista del soggiorno dalla cucina', category: 'living' },
+  { id: 'liv4', src: './images/apartment/living-4.jpeg', alt: 'Parete attrezzata con TV e tavolo', category: 'living' },
   // --- Immagini Camera da Letto ---
-  { id: 'cam1', src: '/images/apartment/camera-1.jpeg', alt: 'Camera matrimoniale con ponte letto', category: 'camera' },
-  { id: 'cam2', src: '/images/apartment/camera-2.jpeg', alt: 'Vista dalla porta della camera da letto', category: 'camera' },
-  { id: 'cam3', src: '/images/apartment/camera-3.jpeg', alt: 'Comò e specchio della camera', category: 'camera' },
-  { id: 'cam4', src: '/images/apartment/camera-4.jpeg', alt: 'Decorazione a tema marino', category: 'camera' },
+  { id: 'cam1', src: './images/apartment/camera-1.jpeg', alt: 'Camera matrimoniale con ponte letto', category: 'camera' },
+  { id: 'cam2', src: './images/apartment/camera-2.jpeg', alt: 'Vista dalla porta della camera da letto', category: 'camera' },
+  { id: 'cam3', src: './images/apartment/camera-3.jpeg', alt: 'Comò e specchio della camera', category: 'camera' },
+  { id: 'cam4', src: './images/apartment/camera-4.jpeg', alt: 'Decorazione a tema marino', category: 'camera' },
   // --- Immagini Bagno ---
-  { id: 'bag1', src: '/images/apartment/bagno-1.jpeg', alt: 'Bagno completo con box doccia in vetro', category: 'bagno' },
+  { id: 'bag1', src: './images/apartment/bagno-1.jpeg', alt: 'Bagno completo con box doccia in vetro', category: 'bagno' },
   // --- Immagini Balcone ---
-  // { id: 'bal1', src: '/images/apartment/balcone-1.jpeg', alt: 'Balcone con tavolino e sedie', category: 'balcone' },
-  { id: 'bal2', src: '/images/apartment/balcone-2.png', alt: 'Vista dal balcone', category: 'balcone' },,
-  { id: 'bal3', src: '/images/apartment/balcone-3.png', alt: 'Dettaglio del balcone', category: 'balcone' },
+  // { id: 'bal1', src: './images/apartment/balcone-1.jpeg', alt: 'Balcone con tavolino e sedie', category: 'balcone' },
+  { id: 'bal2', src: './images/apartment/balcone-2.png', alt: 'Vista dal balcone', category: 'balcone' },,
+  { id: 'bal3', src: './images/apartment/balcone-3.png', alt: 'Dettaglio del balcone', category: 'balcone' },
 ];
 
 export const SERVICES_LIST: Service[] = [
