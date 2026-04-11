@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { Page, Review } from '../types';
 import { REVIEWS } from '../constants.tsx';
 import StarRating from './StarRating';
-import heroImage from '../images/apartment/PXL_20241124_104229648.MP-EFFECTS-3840x2160.jpg';
-import apartmentImage from '../images/apartment/living-3.jpeg';
+const heroImage = './images/apartment/PXL_20241124_104229648.MP-EFFECTS-3840x2160.jpg';
+const apartmentImage = './images/apartment/living-3.jpeg';
 
 interface HomeProps {
   onNavigate: (page: Page) => void;
@@ -70,7 +70,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           </div>
           {/* Avventure Elbane */}
           <div className="bg-white rounded-lg shadow-xl overflow-hidden group transform hover:-translate-y-2 transition-transform duration-300">
-            <img src="/images/attivita/image-elba-coast.jpg" alt="Costa dell'Elba" className="w-full h-56 object-cover" onError={(e) => { e.currentTarget.src = 'https://picsum.photos/id/10/600/400' }} />
+            <img src="./images/attivita/image-elba-coast.jpg" alt="Costa dell'Elba" className="w-full h-56 object-cover" onError={(e) => { e.currentTarget.src = 'https://picsum.photos/id/10/600/400' }} />
             <div className="p-6">
               <h3 className="text-2xl font-serif text-gray-800">Avventure Elbane</h3>
               <p className="mt-2 text-gray-600">Esplora i sentieri nascosti e le calette segrete dell'isola.</p>
