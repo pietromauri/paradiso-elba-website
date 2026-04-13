@@ -1,0 +1,3 @@
+## 2024-05-18 - Accessible Interactive Star Ratings
+**Learning:** Custom interactive components like star rating inputs often use `focus:outline-none` to hide default browser focus rings, completely breaking keyboard navigation for accessibility. Additionally, interactive SVG icons within these components are not inherently readable by screen readers.
+**Action:** When creating custom interactive inputs, always replace `focus:outline-none` with visible focus alternatives like `focus-visible:ring-2`, add descriptive `aria-label`s to the interactive elements (buttons), and set `aria-hidden="true"` on inner decorative SVGs so screen readers announce the button label clearly.
