@@ -185,12 +185,16 @@ const ActivityCard: React.FC<{ activity: typeof ACTIVITIES[0] }> = ({ activity }
   );
 };
 
+const MARE_ACTIVITIES = ACTIVITIES.filter(a => a.category === 'Mare');
+const TERRA_ACTIVITIES_BASE = ACTIVITIES.filter(a => a.category === 'Terra');
+const CULTURA_ACTIVITIES = ACTIVITIES.filter(a => a.category === 'Cultura e Gusto');
+
 const Activities: React.FC = () => {
-  const mareActivities = ACTIVITIES.filter(a => a.category === 'Mare');
+  const mareActivities = MARE_ACTIVITIES;
   
   // Custom sorting for Terra activities based on URL param
   const terraActivities = React.useMemo(() => {
-    const list = ACTIVITIES.filter(a => a.category === 'Terra');
+    const list = [...TERRA_ACTIVITIES_BASE]; // shallow copy to sort safely if needed, but since we return directly we just use it or sort it
     const params = new URLSearchParams(window.location.search);
     const partenza = params.get('partenza');
     
@@ -203,10 +207,10 @@ const Activities: React.FC = () => {
         return 0;
       });
     }
-    return list;
+    return TERRA_ACTIVITIES_BASE;
   }, []);
 
-  const culturaActivities = ACTIVITIES.filter(a => a.category === 'Cultura e Gusto');
+  const culturaActivities = CULTURA_ACTIVITIES;
 
   return (
     <div className="bg-gray-50">
