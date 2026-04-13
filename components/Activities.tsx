@@ -107,7 +107,7 @@ const ActivityCard: React.FC<{ activity: typeof ACTIVITIES[0] }> = ({ activity }
                         href={activity.gpxTrack}
                         download={!activity.gpxTrack.startsWith('http')}
                         target={activity.gpxTrack.startsWith('http') ? '_blank' : '_self'}
-                        rel="noreferrer"
+                        rel={activity.gpxTrack.startsWith('http') ? "noopener noreferrer" : ""}
                         className="flex items-center justify-center gap-2 w-full bg-teal-600 text-white px-4 py-3 rounded-xl font-bold hover:bg-teal-700 transition-all shadow-md active:scale-95"
                       >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -133,7 +133,7 @@ const ActivityCard: React.FC<{ activity: typeof ACTIVITIES[0] }> = ({ activity }
                           <p>{activity.hostTip.text}</p>
                           {activity.hostTip.linkUrl && (
                             <p className="mt-2">
-                              <a href={activity.hostTip.linkUrl} target="_blank" rel="noreferrer" className="font-bold underline hover:text-amber-900">
+                              <a href={activity.hostTip.linkUrl} target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-amber-900">
                                 {activity.hostTip.linkText || 'Scopri di più'} &rarr;
                               </a>
                             </p>
