@@ -26,7 +26,15 @@ const ActivityCard: React.FC<{ activity: typeof ACTIVITIES[0] }> = ({ activity }
   return (
     <>
       <div
-        className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col transform hover:-translate-y-2 transition-transform duration-300 cursor-pointer group"
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            setShowDetail(true);
+          }
+        }}
+        className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col transform hover:-translate-y-2 transition-transform duration-300 cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
         onClick={() => setShowDetail(true)}
       >
         <div className="relative h-56 overflow-hidden">
@@ -59,6 +67,8 @@ const ActivityCard: React.FC<{ activity: typeof ACTIVITIES[0] }> = ({ activity }
           </div>
           <div className="mt-6">
             <button
+              tabIndex={-1}
+              aria-hidden="true"
               className="w-full bg-teal-600 text-white px-4 py-2 rounded-full text-sm font-bold hover:bg-teal-700 transition-colors text-center"
             >
               Vedi Dettagli & Foto
@@ -77,7 +87,8 @@ const ActivityCard: React.FC<{ activity: typeof ACTIVITIES[0] }> = ({ activity }
                 <h2 className="text-2xl md:text-3xl font-serif text-teal-700 leading-tight">{activity.title}</h2>
               </div>
               <button
-                className="p-2 hover:bg-gray-100 rounded-full transition-colors text-gray-500"
+                aria-label="Chiudi"
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
                 onClick={() => setShowDetail(false)}
               >
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
