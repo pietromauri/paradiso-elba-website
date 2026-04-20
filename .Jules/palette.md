@@ -4,3 +4,6 @@
 ## 2024-04-13 - Security Fix: Environment Variable Exposure
 **Learning:** Found a security vulnerability where the `GEMINI_API_KEY` was being inadvertently injected into the client-side bundle via the Vite `define` config.
 **Action:** Removed the `define` block from `vite.config.ts` entirely to prevent any server-side secrets from being exposed to the client.
+## 2025-04-20 - Interactive Div Cards Keyboard Accessibility
+**Learning:** Using `div` elements as interactive cards (e.g., with `onClick` handlers) makes them completely invisible to screen readers and unreachable via keyboard navigation, leading to a frustrating experience for users relying on assistive technologies. Even if inner buttons exist, they might be skipped or confusing if the entire card acts as the interactive surface.
+**Action:** Always add `role="button"`, `tabIndex={0}`, and an `onKeyDown` handler (listening for Space and Enter) to `div` elements that act as interactive cards. Additionally, provide clear focus indicators using `focus-visible` styles and ensure any inner decorative buttons are removed from the tab order using `tabIndex={-1}` and `aria-hidden="true"` to prevent redundant tab stops.
